@@ -1,4 +1,5 @@
-import {Token, AbstractToken, ParenthesisToken, Parenthesis, ArithmeticOperator} from './tokens';
+import { Token } from './token';
+import { ParenthesisToken } from './parenthesis-token';
 
 export class Lexer {
   identifiers: Array<String>;
@@ -15,6 +16,9 @@ export class Lexer {
       curToken += exp.charAt(i);
       let token = this.getToken(curToken);
       curToken = token ? "" : curToken;
+      if(token) {
+        tokens.push(token);
+      }
     }
 
     return tokens;
